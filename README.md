@@ -6,10 +6,6 @@ My config takes the stock configurations for both and adds some aesthetic and fu
 
 *GlazeWM* changes:
 
-> [!NOTE]
-> `hide_title_bar` can cause rendering issues with some apps. If that does occur change the value back to false in the config.
-
-- `hide_title_bar` is *enabled* for active/inactive windows
 - Border color for active windows are `#7EBC89`
 - Gaps between windows/edges are `8px`
 
