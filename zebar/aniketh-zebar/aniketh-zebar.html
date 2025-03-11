@@ -35,8 +35,6 @@
         date: { type: "date", formatting: "EEE d MMM t" },
         battery: { type: "battery" },
         memory: { type: "memory" },
-        weather: { type: "weather" },
-        keyboard: { type: "keyboard" },
       });
 
       createRoot(document.getElementById("root")).render(<App />);
@@ -121,6 +119,7 @@
                 <div className="workspaces">
                   {output.glazewm.currentWorkspaces.map(workspace => (
                     <button
+                      onClick={() => output.glazewm.runCommand(`focus --workspace ${workspace.name}`)}
                       className={`workspace ${workspace.hasFocus && 'focused'} ${workspace.isDisplayed && 'displayed'}`}
                       key={workspace.name}
                     >
@@ -160,21 +159,20 @@
               )}
 
               {output.battery && (
-                <div className="battery">
-                  {/* Show icon for whether battery is charging. */}
-                  {output.battery.isCharging && (
-                    <i className="nf nf-md-power_plug charging-icon"></i>
-                  )}
-                  {getBatteryIcon(output.battery)}
-                  {Math.round(output.battery.chargePercent)}%
-                </div>
-              )}
-
-              {output.weather && (
-                <div className="weather">
-                  {getWeatherIcon(output.weather)}
-                  {Math.round(output.weather.fahrenheitTemp)}°F
-                </div>
+                <>
+                  <div className="battery">
+                    {/* Show icon for whether battery is charging. */}
+                    {output.battery.isCharging && (
+                      <i className="nf nf-md-power_plug charging-icon"></i>
+                    )}
+                    {getBatteryIcon(output.battery)}
+                    {Math.round(output.battery.chargePercent)}%
+                  </div>
+                  <div className="power">
+                    <i className="nf nf-md-lightning_bolt"></i>
+                    {Math.round(output.battery.powerConsumption)}W
+                  </div>
+                </>
               )}
             </div>
           </div>
