@@ -71,23 +71,8 @@ body,
 
   &.focused,
   &:hover {
-    background: rgb(255 255 255 / 50%);
+    background: rgb(79 143 149 / 50%);
   }
-}
-
-.binding-mode,
-.tiling-direction {
-  background: rgb(255 255 255 / 15%);
-  color: rgb(255 255 255 / 90%);
-  border-radius: 2px;
-  line-height: 1;
-  padding: 4px 8px;
-  border: 0;
-  cursor: pointer;
-}
-
-.binding-mode {
-  margin-right: 4px;
 }
 
 .cpu .high-usage {
@@ -105,7 +90,12 @@ body,
   top: 3px;
 }
 
+/* Power icon has more spacing */
+.power i {
+  margin-right: 4px;
+}
+
 i {
-  color: rgb(255 255 255 / 90%);
+  color: rgb(79 143 149 / 90%);
   margin-right: 7px;
 }
