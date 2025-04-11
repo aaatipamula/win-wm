@@ -1,5 +1,10 @@
 @import "https://www.nerdfonts.com/assets/css/webfont.css";
 
+:root {
+  --accent-color: #82aaff;
+  --bg-opacity: 40%;
+}
+
 body {
   color: rgb(255 255 255 / 90%);
   font-family: ui-monospace, monospace;
@@ -14,7 +19,7 @@ body,
 }
 
 #root {
-  background: rgba(0, 0, 0, 15%);
+  background: rgba(0, 0, 0, var(--bg-opacity));
 }
 
 .app {
@@ -71,7 +76,7 @@ body,
 
   &.focused,
   &:hover {
-    background: rgb(79 143 149 / 50%);
+    background: var(--accent-color);
   }
 }
 
@@ -96,6 +101,6 @@ body,
 }
 
 i {
-  color: rgb(79 143 149 / 90%);
+  color: var(--accent-color);
   margin-right: 7px;
 }
