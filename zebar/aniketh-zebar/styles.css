@@ -106,7 +106,8 @@ body,
   justify-self: start;
 }
 
-.left:last-child {
+/* Remove margin from the last element in the right div */
+.left > *:last-child {
   margin-right: 0;
 }
 
@@ -118,6 +119,11 @@ body,
 .right {
   margin: 4px 10px 0px 0px;
   justify-self: end;
+}
+
+/* Remove margin from the last element in the right div */
+.right > *:last-child {
+  margin-right: 0;
 }
 
 .logo {
@@ -197,7 +203,6 @@ body,
 }
 
 .power{
-  margin-right: 0;
   color: var(--orange);
   background-color: rgba(var(--rgb-orange), var(--opacity));
 }
