@@ -82,6 +82,13 @@
           return "";
         }
 
+        function getBatteryClasses(batteryOutput) {
+          let classString = "battery";
+          if (batteryOutput.chargePercent <= 20) classString += " low-battery";
+          if (batteryOutput.isCharging) classString += " charging";
+          return classString;
+        }
+
         return (
           <div className="app">
             <div className="left">
@@ -106,7 +113,10 @@
             <div className="right">
               {output.network && (
                 <div className="network">
-                  {getNetworkIcon(output.network)} {output.network.defaultGateway?.ssid}
+                  {getNetworkIcon(output.network)} {
+                    output.network.defaultGateway?.ssid +
+                    ` (${output.network.defaultGateway?.signalStrength}%)`
+                  }
                 </div>
               )}
 
@@ -124,12 +134,13 @@
 
               {output.battery && (
                 <>
-                  <div className="battery">
+                  <div className={getBatteryClasses(output.battery)}>
                     {/* Show icon for whether battery is charging. */}
                     {output.battery.isCharging && (
-                      <span class="charging-icon"></span>
-                    )}
-                    {getBatteryIcon(output.battery)} {Math.round(output.battery.chargePercent)}%
+                      <span className="charging-icon"></span>
+                    ) || (
+                      getBatteryIcon(output.battery)
+                    )} {Math.round(output.battery.chargePercent)}%
                   </div>
                   <div className="power">
                     󱐋 {Math.round(output.battery.powerConsumption)}W
